@@ -20,8 +20,10 @@ const Messages = styled.div`
 const MessageCont = styled.div`
   display: flex;
   flex-direction: ${(props) => props.isMine && "row-reverse"};
+  background: ${(props) => props.isMine && "#281e68"};
   width: 99%;
-  margin: 3px;
+  margin: 2px;
+  border-radius: 8px;
 `;
 
 const Avatar = styled.img`
@@ -34,7 +36,7 @@ const Avatar = styled.img`
 const Message = styled.div`
   display: flex;
   background: lightblue;
-  border-radius: 30px;
+  border-radius: 8px;
   margin: 5px;
   padding: 3px;
   align-items: center;
@@ -42,14 +44,22 @@ const Message = styled.div`
 
 const SendMessageCont = styled.form`
   display: flex;
+  justify-content: end;
+  align-items: center;
+  border-radius: 8px;
 `;
 
 const Input = styled.input`
   display: flex;
+  width: 80%;
+  height: 30px;
+  border-radius: 8px;
 `;
 
 const Send = styled.button`
   display: flex;
+  border-radius: 8px;
+  margin-left: 3px;
 `;
 
 function Chat() {

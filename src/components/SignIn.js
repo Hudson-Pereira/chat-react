@@ -13,9 +13,15 @@ export const SignInCont = styled.div`
 `;
 
 export const SignInButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  heigth: 40px;
+  background-color: #281e68;
+  border-radius: 8px;
+  margin-left: 200%;
   font-size: 14px;
-  color: white;
-  background-color: green;
+  color: black;
 `;
 
 function SignIn() {
@@ -32,7 +38,7 @@ function SignIn() {
 
   return (
     <SignInCont>
-      <SignInButton onClick={signInWithGoogle}>Entrar/Criar</SignInButton>
+      <SignInButton onClick={signInWithGoogle}>Entrar</SignInButton>
     </SignInCont>
   );
 }

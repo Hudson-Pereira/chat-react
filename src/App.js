@@ -21,10 +21,9 @@ function App() {
   return (
     <Layout>
       <Container>
-        <Header>
-          {user && <LogoutButton onClick={SignOut}>Sair</LogoutButton>}
-        </Header>
+        <Header></Header>
         {user ? <Chat /> : <SignIn />}
+        {user && <LogoutButton onClick={SignOut}>Sair</LogoutButton>}
       </Container>
     </Layout>
   );

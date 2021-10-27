@@ -1,16 +1,17 @@
 import styled from "styled-components";
 
 export const Layout = styled.div`
-  width: 100vw;
+  width: 70vw;
   display: flex;
   align-itens: center;
   justify-content: center;
+  background: #ff6827;
 `;
 
 export const Container = styled.div`
   width: 70%;
   height: 100%;
-  background: darkgrey;
+  background: #eaeef1;
 `;
 
 export const Header = styled.header`
@@ -21,5 +22,6 @@ export const Header = styled.header`
 export const LogoutButton = styled.button`
   font-size: 14px;
   color: black;
-  background-color: red;
+  background-color: #281e68;
+  border-radius: 8px;
 `;
