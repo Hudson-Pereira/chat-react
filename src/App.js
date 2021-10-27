@@ -9,7 +9,13 @@ function SignOut() {
   auth.signOut();
 }
 
+function pageScroll() {
+  window.scrollBy(0, 1);
+  const scrolldelay = setTimeout(pageScroll, 10);
+}
+
 function App() {
+  pageScroll();
   const [user] = useAuthState(auth);
 
   return (
