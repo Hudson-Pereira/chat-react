@@ -1,12 +1,43 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { addDoc, collection, query } from "firebase/firestore";
+import { addDoc, collection, query, orderBy } from "firebase/firestore";
 import { firestore, auth } from "./Firebase";
 import { useAuthState } from "react-firebase9-hooks/auth";
 import { useCollectionData } from "react-firebase9-hooks/firestore";
 
 const Messages = styled.div`
   display: flex;
+  flex-direction: column;
+`;
+
+// const Nome = styled.div`
+//   display: flex;
+//   align-items: center;
+//   background: red;
+//   height: 25px;
+// `;
+
+const MessageCont = styled.div`
+  display: flex;
+  flex-direction: ${(props) => props.isMine && "row-reverse"};
+  width: 99%;
+  margin: 3px;
+`;
+
+const Avatar = styled.img`
+  width: 40px;
+  height: 40px;
+  border-radius: 30px;
+  margin: 5px;
+`;
+
+const Message = styled.div`
+  display: flex;
+  background: lightblue;
+  border-radius: 30px;
+  margin: 5px;
+  padding: 3px;
+  align-items: center;
 `;
 
 const SendMessageCont = styled.form`
@@ -25,7 +56,9 @@ function Chat() {
   const [formValue, setFormValue] = useState("");
   const [user] = useAuthState(auth);
   const messagesRef = collection(firestore, "messages");
-  const [messages] = useCollectionData(query(messagesRef));
+  const [messages] = useCollectionData(
+    query(messagesRef, orderBy("createdAt"))
+  );
 
   function sendMessage(e) {
     const { uid, displayName, photoURL } = user;
@@ -44,6 +77,15 @@ function Chat() {
 
   return (
     <Messages>
+      {messages &&
+        messages.map((msg) => (
+          <MessageCont isMine={msg.uid === user.uid}>
+            {/* <Nome>{msg.displayName}</Nome> */}
+            <Avatar src={msg.photoURL} />
+
+            <Message>{msg.text}</Message>
+          </MessageCont>
+        ))}
       <SendMessageCont onSubmit={sendMessage}>
         <Input
           type="text"
